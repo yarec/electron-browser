@@ -45,7 +45,7 @@ var BrowserPage = React.createClass({
       this.navigateTo(this.props.page.location)
   },
   componentWillUnmount: function () {
-    window.removeEventListener('resize', resize)    
+    window.removeEventListener('resize', resize)
   },
 
   navigateTo: function (l) {
@@ -63,7 +63,7 @@ var BrowserPage = React.createClass({
       <webview ref="webview" preload="./preload/main.js" onContextMenu={this.props.onContextMenu} />
       <BrowserPageStatus page={this.props.page} />
     </div>
-  }  
+  }
 })
 
 function webviewHandler (self, fnName) {
@@ -82,6 +82,7 @@ var webviewEvents = {
   'did-get-response-details': 'onDidGetResponseDetails',
   'did-get-redirect-request': 'onDidGetRedirectRequest',
   'dom-ready': 'onDomReady',
+  'new-window': 'onNewWindow',
   'page-title-set': 'onPageTitleSet',
   'close': 'onClose',
   'destroyed': 'onDestroyed',

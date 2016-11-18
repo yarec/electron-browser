@@ -5,9 +5,10 @@ var MenuItem = remote.require('menu-item')
 var clipboard = require('clipboard')
 var urllib = require('url')
 
+var home_url = 'http://114.215.168.201/mini2015/'
 function createPageObject (location) {
   return {
-    location: location||'https://github.com/pfraze/electron-browser',
+    location: location|| home_url,
     statusText: false,
     title: 'new tab',
     isLoading: false,
@@ -121,7 +122,7 @@ var BrowserChrome = React.createClass({
       self.getPageObject().location = l
       self.getPage().navigateTo(l)
     }}))
-    menu.popup(remote.getCurrentWindow())    
+    menu.popup(remote.getCurrentWindow())
   },
   webviewContextMenu: function (e) {
     var self = this
@@ -198,7 +199,7 @@ var BrowserChrome = React.createClass({
     onChangeLocation: function (location) {
       var page = this.getPageObject()
       page.location = location
-      this.setState(this.state)      
+      this.setState(this.state)
     },
     onLocationContextMenu: function (e) {
       this.locationContextMenu(e.target)
@@ -246,7 +247,19 @@ var BrowserChrome = React.createClass({
       else if (e.channel == 'contextmenu-data') {
         this.webviewContextMenu(e.args[0])
       }
+    },
+    onNewWindow: function (e, url) {
+        console.log(url );
+        this.createTab(url.statusText)
     }
+  },
+  btnHandler: function (){
+      const spawn = require('child_process').spawn;
+      let exec = spawn('atom', [], {});
+      exec.stdout.on('data', function(data){
+          console.log('stdout: ' + data)
+      });
+      console.log("btn click ....")
   },
 
   render: function() {
@@ -254,6 +267,7 @@ var BrowserChrome = React.createClass({
     return <div>
       <BrowserTabs ref="tabs" pages={this.state.pages} currentPageIndex={this.state.currentPageIndex} {...this.tabHandlers} />
       <BrowserNavbar ref="navbar" {...this.navHandlers} page={this.state.pages[this.state.currentPageIndex]} />
+      <button onClick={this.btnHandler} style={{backgroundColor: 'yellow'}}>click</button>
       {this.state.pages.map(function (page, i) {
         if (!page)
           return
