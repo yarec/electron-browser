@@ -1,11 +1,18 @@
 'use strict'
-var remote = require('remote')
-var Menu = remote.require('menu')
-var MenuItem = remote.require('menu-item')
-var clipboard = require('clipboard')
-var urllib = require('url')
+const {remote} = require('electron');
+
+//var Menu = remote.require('menu')
+//var MenuItem = remote.require('menu-item')
+const {Menu, MenuItem} = remote.require('electron');
+
+//var clipboard = require('electron')
+const {clipboard} = remote.require('electron');
+
+//var urllib = require('url')
+const {urllib} = remote.require('electron');
 
 var home_url = 'http://114.215.168.201/mini2015/'
+//home_url = 'http://114.215.86.233/mini2015/';
 function createPageObject (location) {
   return {
     location: location|| home_url,
@@ -185,11 +192,11 @@ var BrowserChrome = React.createClass({
       this.getWebView().reload()
     },
     onClickBundles: function () {
-      var location = urllib.parse(this.getWebView().getUrl()).path
+      var location = urllib.parse(this.getWebView().getURL()).path
       this.getPage().navigateTo('/bundles/view.html#'+location)
     },
     onClickVersions: function () {
-      var location = urllib.parse(this.getWebView().getUrl()).path
+      var location = urllib.parse(this.getWebView().getURL()).path
       this.getPage().navigateTo('/bundles/versions.html#'+location)
     },
     onClickSync: console.log.bind(console, 'sync'),
@@ -222,7 +229,7 @@ var BrowserChrome = React.createClass({
       // update state
       var webview = this.getWebView(pageIndex)
       page.statusText = false
-      page.location = webview.getUrl()
+      page.location = webview.getURL()
       page.canGoBack = webview.canGoBack()
       page.canGoForward = webview.canGoForward()
       if (!page.title)
@@ -233,7 +240,7 @@ var BrowserChrome = React.createClass({
     onPageTitleSet: function (e) {
       var page = this.getPageObject()
       page.title = e.title
-      page.location = this.getWebView().getUrl()
+      page.location = this.getWebView().getURL()
       this.setState(this.state)
     },
     onContextMenu: function (e, page, pageIndex) {
@@ -249,13 +256,13 @@ var BrowserChrome = React.createClass({
       }
     },
     onNewWindow: function (e, url) {
-        console.log(url );
-        this.createTab(url.statusText)
+        console.log(e)
+        this.createTab(e.url)
     }
   },
   btnHandler: function (){
       const spawn = require('child_process').spawn;
-      let exec = spawn('atom', [], {});
+      let exec = spawn('explorer', ['c:\\Windows'], {});
       exec.stdout.on('data', function(data){
           console.log('stdout: ' + data)
       });
