@@ -1,9 +1,8 @@
 require('./hover-status')
 require('./context-menu')
 
-console.log("preload main ...")
-
 const { ipcRenderer } = require('electron')
+const { config } = require('../config');
 
 global.kt = {
     params: [],
@@ -19,9 +18,6 @@ global.kt = {
           var arg = p+':'+ kt.params[p]
           reqdata.push(arg)
         }
-
-        var fs=require('fs');
-        var config = JSON.parse(fs.readFileSync('./config.json'));
 
         //mini2016.exe old appkey ids uid ids:1,2,3 uid:232
         //mini2016.exe new appkey dataUrl cburl tmpurl mgrurl

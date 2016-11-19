@@ -1,21 +1,9 @@
 'use strict'
 const {remote} = require('electron');
-
-//var Menu = remote.require('menu')
-//var MenuItem = remote.require('menu-item')
 const {Menu, MenuItem} = remote.require('electron');
-
-//var clipboard = require('electron')
 const {clipboard} = remote.require('electron');
-
-//var urllib = require('url')
 const {urllib} = remote.require('electron');
-
-var fs=require('fs');
-
-var t =  new Date().getTime()
-
-var config = JSON.parse(fs.readFileSync('./config.json'));
+const {config} = require('./config');
 
 var home_url = config.home_url
 function createPageObject (location) {

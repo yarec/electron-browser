@@ -4,8 +4,7 @@
   "main": "index.js",
   "description": "browser ui for electron, written in react",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "packager": "electron-packager ./ mini2016 --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite "
   },
   "keywords": [
     "electron",
@@ -13,16 +12,11 @@
     "webview",
     "react"
   ],
-  "author": "Paul Frazee <pfrazee@gmail.com>",
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "electron-packager": "^8.3.0",
     "electron-prebuilt": "^0.28.2"
   },
-  "dependencies": {
-
-  },
-  "scripts" : {
-    "packager": "electron-packager ./ HelloWorld --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite "
-  }
+  "dependencies": {}
 }
