@@ -11,10 +11,13 @@ const {clipboard} = remote.require('electron');
 //var urllib = require('url')
 const {urllib} = remote.require('electron');
 
+var fs=require('fs');
+
 var t =  new Date().getTime()
 
-var home_url = 'http://114.215.168.201/mini2015/t.html?t='+t
-//home_url = 'http://114.215.86.233/mini2015/';
+var config = JSON.parse(fs.readFileSync('./config.json'));
+
+var home_url = config.home_url
 function createPageObject (location) {
   return {
     location: location|| home_url,
@@ -264,12 +267,13 @@ var BrowserChrome = React.createClass({
   },
   btnHandler: function (){
       const spawn = require('child_process').spawn;
+      //let exec = spawn('node', [], {});
       //let exec = spawn('explorer', ['c:\\Windows'], {});
     //   let exec = spawn('gvim', [], {});
     //   exec.stdout.on('data', function(data){
     //       console.log('stdout: ' + data)
     //   });
-       
+
        this.getWebView().openDevTools()
        console.log("btn click ....")
   },

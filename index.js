@@ -11,7 +11,7 @@ app.on('window-all-closed', function() {
 })
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow({ width: 1330, height: 920, frame: false })
+  mainWindow = new BrowserWindow({ width: 1030, height: 920, frame: false })
   // mainWindow.loadURL('file://' + require('path').join(__dirname, 'browser.html'))
   mainWindow.loadURL('file://' + __dirname + '/browser.html');
   mainWindow.on('closed', function() {
