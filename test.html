@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript">
+function load() {
+    window.status="Page is loaded"
+}
+
+
+function clear_param(){
+    kt.clearReportParam();
+}
+function add_param(){
+    kt.addReportParam('aa', 'xx');
+    kt.addReportParam('bb', '123');
+}
+function print(){
+    kt.print2("?r=AppPrintText/printFilename&ids");
+}
+function show_report(){
+    var ids = '1,2,3'
+    var g_myUserId= '12344'
+    kt.showReport("orders",ids,g_myUserId);
+}
+
+        </script>
+    </head>
+
+    <body onload="load()">
+
+        <p> kt.clearReportParam </p>
+        <p> kt.addReportParam </p>
+        <p> kt.print2 </p>
+        <button onclick="clear_param()"> clearparam</button>
+        <button onclick="add_param()"> addparam</button>
+        <button onclick="print()"> print </button>
+        <button onclick="show_report()"> showReport</button>
+    </body>
+
+</html>

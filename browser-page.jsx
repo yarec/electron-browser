@@ -60,7 +60,7 @@ var BrowserPage = React.createClass({
   render: function () {
     return <div id="browser-page" className={this.props.isActive ? 'visible' : 'hidden'}>
       <BrowserPageSearch isActive={this.props.page.isSearching} onPageSearch={this.onPageSearch} />
-      <webview ref="webview" preload="./preload/main.js" onContextMenu={this.props.onContextMenu} />
+      <webview ref="webview" preload="./preload/main.js" onContextMenu={this.props.onContextMenu} nodeintegration />
       <BrowserPageStatus page={this.props.page} />
     </div>
   }

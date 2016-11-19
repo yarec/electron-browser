@@ -1,7 +1,9 @@
-var ipc = require('ipc')
+//var ipc = require('ipc')
+const { ipc} = require('electron');
+const { ipcRenderer } = require('electron')
 
 function setStatus (status) {
-  ipc.sendToHost('status', status)
+  ipcRenderer.sendToHost('status', status)
 }
 
 window.addEventListener('mouseover', function (e) {
@@ -14,7 +16,7 @@ window.addEventListener('mouseover', function (e) {
         setStatus(el.getAttribute('title'))
       else if (el.href)
         setStatus(el.href)
-      return 
+      return
     }
     el = el.parentNode
   }
