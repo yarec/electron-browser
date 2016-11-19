@@ -172,6 +172,9 @@ var BrowserChrome = React.createClass({
   },
 
   navHandlers: {
+    onOpenDev: function () {
+       this.getWebView().openDevTools()
+    },
     onClickHome: function () {
       this.getWebView().goToIndex(0)
     },
@@ -271,7 +274,6 @@ var BrowserChrome = React.createClass({
     return <div>
       <BrowserTabs ref="tabs" pages={this.state.pages} currentPageIndex={this.state.currentPageIndex} {...this.tabHandlers} />
       <BrowserNavbar ref="navbar" {...this.navHandlers} page={this.state.pages[this.state.currentPageIndex]} />
-      <button onClick={this.btnHandler} style={{backgroundColor: 'yellow'}}>click</button>
       {this.state.pages.map(function (page, i) {
         if (!page)
           return

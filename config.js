@@ -6,8 +6,8 @@ const {remote} = require('electron');
 const {app} = remote.require('electron');
 
 try {
-  var content = fs.readFileSync('./config1.json');
-  var config = JSON.parse(internalModule.stripBOM(content));
+  var content = fs.readFileSync('./config.json');
+  var config = JSON.parse(content);
 } catch (err) {
   alert(err.message)
   app.quit()

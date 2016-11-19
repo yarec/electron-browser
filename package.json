@@ -1,10 +1,17 @@
 {
-  "name": "electron-browser",
+  "name": "mini2016",
   "version": "1.2.1",
   "main": "index.js",
   "description": "browser ui for electron, written in react",
   "scripts": {
-    "packager": "electron-packager ./ mini2016 --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite "
+    "pkg": "electron-packager ./ mini2016 --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite --icon=build/icon.ico",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "your.id",
+    "win": {
+    }
   },
   "keywords": [
     "electron",
@@ -15,8 +22,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "electron-builder": "^8.6.0",
     "electron-packager": "^8.3.0",
-    "electron-prebuilt": "^0.28.2"
+    "electron-prebuilt": "^1.4.7"
   },
   "dependencies": {}
 }
