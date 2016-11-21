@@ -6,11 +6,23 @@
   "scripts": {
     "pkg": "electron-packager ./ mini2016 --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite --icon=build/icon.ico",
     "pack": "build --dir",
+    "test": "rm dist -r && build --dir",
     "dist": "build"
   },
   "build": {
     "appId": "your.id",
+    "asar": false,
+    "extraFiles": [
+      "config.json"
+    ],
+    "files": [
+      "**/*",
+      "!download/**/*",
+      "!OutApp/**/*",
+      "!release/**/*"
+    ],
     "win": {
+      "target": "zip"
     }
   },
   "keywords": [
@@ -26,5 +38,8 @@
     "electron-packager": "^8.3.0",
     "electron-prebuilt": "^1.4.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-plugins": "^0.1.0",
+    "electron-updater": "^0.3.1"
+  }
 }
