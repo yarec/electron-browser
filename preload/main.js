@@ -30,5 +30,56 @@ global.kt = {
     },
     showReport : (type, ids, uid) => {
         console.log(type + ids + uid)
+    },
+    downloadFile : (url, type, o) =>{
+      console.log(url)
+
+      var http = require('http'),
+      fs = require('fs'),
+      path= require("path");
+      if(!fs.existsSync('download/')){
+        var creats = fs.mkdirSync('download', 0777);
+      }
+      var fname = path.basename(url)
+      console.log(fname)
+      var request = http.get(url, function(response) {
+        if (response.statusCode === 200) {
+          var file = fs.createWriteStream("download/"+fname);
+          response.pipe(file);
+
+          const spawn = require('child_process').spawn;
+          var arg = '/select,download\\'+fname.replace(/"/g,"");
+          console.log(arg)
+          let exec = spawn('explorer', [arg], {});
+          exec.stdout.on('data', function(data){
+            console.log('stdout: ' + data)
+          });
+
+          return true
+        }else{
+          console.log("download error: " + response.statusCode )
+        }
+        // Add timeout.
+        request.setTimeout(120000, function () {
+          console.log("download timeout ...")
+          request.abort();
+        });
+      });
+
+      //return true
+    },
+    run : (cmd) => {
+      /*
+      path= require("path");
+      var fname = path.basename(cmd)
+
+      const spawn = require('child_process').spawn;
+      var arg = '/select,download\\'+fname.replace(/"/g,"");
+      console.log(arg)
+      let exec = spawn('explorer', [arg], {});
+      exec.stdout.on('data', function(data){
+        console.log('stdout: ' + data)
+      });
+      */
     }
-}
+  }

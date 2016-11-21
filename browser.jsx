@@ -3,7 +3,12 @@ const {remote} = require('electron');
 const {Menu, MenuItem} = remote.require('electron');
 const {clipboard} = remote.require('electron');
 const {urllib} = remote.require('electron');
+const {ipcRenderer} = require('electron');
 const {config} = require('./config');
+
+ipcRenderer.on('global-shortcut', function (arg, val) {
+  document.querySelectorAll("webview")[0].openDevTools()
+});
 
 var home_url = config.home_url
 function createPageObject (location) {
@@ -172,6 +177,15 @@ var BrowserChrome = React.createClass({
   },
 
   navHandlers: {
+    onTest: function(){
+        const spawn = require('child_process').spawn;
+        var arg = "/select,download\\2016_11_19_16_08_20.xls\"".replace(/"/g,"")
+        console.log(arg)
+        let exec = spawn('explorer', [arg], {});
+        exec.stdout.on('data', function(data){
+            console.log('stdout: ' + data)
+        });
+    },
     onOpenDev: function () {
        this.getWebView().openDevTools()
     },

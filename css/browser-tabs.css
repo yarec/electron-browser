@@ -10,7 +10,7 @@
   -webkit-app-region: no-drag;
   flex: 1;
   display: flex;
-  background: linear-gradient(to bottom, #fdfdfd 90%, #f5f5f5);
+  background: linear-gradient(to bottom, #fdfdfd 90%, #ccc);
   color: #777;
   border-top: 1px solid #ccc;
   border-right: 1px solid #ccc;

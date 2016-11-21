@@ -1,0 +1,6 @@
+
+rm dist -r
+build --dir
+rm -r dist/win-unpacked/resources/app.asar.unpacked
+cp config.json dist/win-unpacked
+cp c:/release dist/win-unpacked -r
