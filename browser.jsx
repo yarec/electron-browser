@@ -173,18 +173,28 @@ var BrowserChrome = React.createClass({
     },
     onClose: function () {
       remote.getCurrentWindow().close()
+      app.quit()
     }
   },
 
   navHandlers: {
     onTest: function(){
-        const spawn = require('child_process').spawn;
-        var arg = "/select,download\\2016_11_19_16_08_20.xls\"".replace(/"/g,"")
-        console.log(arg)
-        let exec = spawn('explorer', [arg], {});
-        exec.stdout.on('data', function(data){
-            console.log('stdout: ' + data)
-        });
+      /*
+      const spawn = require('child_process').spawn;
+      var arg = "/select,download\\2016_11_19_16_08_20.xls\"".replace(/"/g,"")
+      console.log(arg)
+      let exec = spawn('explorer', [arg], {});
+      exec.stdout.on('data', function(data){
+      console.log('stdout: ' + data)
+      });
+      */
+      console.log("on test ...")
+
+      const json= require('./jsonfile');
+      var file = new json.File('t.json')
+      file.set("a.b", "v")
+      file.writeSync()
+
     },
     onOpenDev: function () {
        this.getWebView().openDevTools()

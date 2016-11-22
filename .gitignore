@@ -1,3 +1,4 @@
 node_modules/
 OutApp
 dist
+config.prod.json

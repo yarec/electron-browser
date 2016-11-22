@@ -1,7 +1,7 @@
 const {resolve} = require('path');
 
 const {app, BrowserWindow} = require('electron');
-//const isDev = require('electron-is-dev');
+const isDev = require('./isdev');
 
 let win;
 
@@ -17,8 +17,7 @@ app.on('ready', () => {
     show: false
   });
   const url = 'file://' + resolve(
-    //isDev ? __dirname : app.getAppPath(),
-    app.getAppPath(),
+    isDev ? __dirname : app.getAppPath(),
     'notify.html'
   );
   win_.loadURL(url);

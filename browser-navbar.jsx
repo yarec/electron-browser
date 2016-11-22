@@ -34,8 +34,8 @@ var BrowserNavbar = React.createClass({
   render: function() {
     return <div id="browser-navbar">
        <BrowserNavbarBtn title="Dev" icon="bug" onClick={this.props.onOpenDev} />
-       {/*
        <BrowserNavbarBtn title="Dev" icon="apple" onClick={this.props.onTest} />
+       {/*
        */}
       <BrowserNavbarBtn title="Rewind" icon="angle-double-left fa-lg" onClick={this.props.onClickHome} disabled={!this.props.page.canGoBack} />
       <BrowserNavbarBtn title="Back" icon="angle-left fa-lg" onClick={this.props.onClickBack} disabled={!this.props.page.canGoBack} />

@@ -31,6 +31,8 @@ var BrowserTabs = React.createClass({
           <a className="minimize" onClick={this.props.onMinimize}><i className="fa fa-circle" /></a>
           <a className="maximize" onClick={this.props.onMaximize}><i className="fa fa-circle" /></a>
           */}
+          <a className="minimize" onClick={this.props.onMinimize}><i className="fa fa-circle" /></a>
+          <a className="maximize" onClick={this.props.onMaximize}><i className="fa fa-circle" /></a>
           <a className="app-close" onClick={this.props.onClose}><i className="fa fa-close" /></a>
       </div>
   }

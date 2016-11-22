@@ -81,5 +81,21 @@ global.kt = {
         console.log('stdout: ' + data)
       });
       */
+    },
+    ConfigValue: 80,
+    config: {},
+    setConfig: (channel, name, value) => {
+      console.log(channel, name, value)
+      kt.config[channel+"."+name] = value
+
+      var path = 'config.prod.json'
+      const json= require('../jsonfile');
+      var file = new json.File(path)
+
+      for(p in kt.config){
+        file.set(p, kt.config[p] )
+      }
+      file.writeSync()
+
     }
   }

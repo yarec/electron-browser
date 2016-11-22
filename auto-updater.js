@@ -3,6 +3,7 @@ const {autoUpdater, ipcRenderer, ipcMain} = require('electron');
 
 const notify = require('./notify'); // eslint-disable-line no-unused-vars
 const {version} = require('./package');
+const isDev = require('./isdev');
 
 // accepted values: `osx`, `win32`
 // https://nuts.gitbook.com/update-windows.html
@@ -19,15 +20,20 @@ function init() {
 
   autoUpdater.setFeedURL(`${FEED_URL}/${version}`);
 
-  setTimeout(() => {
-    console.log("try update : " + new Date())
-    autoUpdater.checkForUpdates();
-  }, 1000);
+  if(!isDev){
+    setTimeout(() => {
+      console.log("try update : " + new Date())
+      autoUpdater.checkForUpdates();
+    }, 10000);
 
-  setInterval(() => {
-    console.log("try update(i) : " + new Date())
+    setInterval(() => {
+      console.log("try update(i) : " + new Date())
+      autoUpdater.checkForUpdates();
+    }, 1800000);
+  }else{
     autoUpdater.checkForUpdates();
-  }, 10000);
+    console.log("auto-updater in dev")
+  }
 
   isInit = true;
 }
