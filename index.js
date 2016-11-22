@@ -1,6 +1,6 @@
 
 const {app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
-var updater = require('electron-updater')
+const AutoUpdater = require('./auto-updater');
 
 var mainWindow = null
 
@@ -10,25 +10,20 @@ app.on('window-all-closed', function() {
   }
 })
 
-app.on('ready', function () {
-
-  updater.on('ready', function () {
+function init(){
     mainWindow = new BrowserWindow({ width: 1030, height: 920, frame: false })
 
-    // mainWindow.loadURL('file://' + require('path').join(__dirname, 'browser.html'))
     mainWindow.loadURL('file://' + __dirname + '/browser.html');
-    mainWindow.maximize()
+    //mainWindow.maximize()
     mainWindow.on('closed', function() {
       mainWindow = null
     })
-  })
-  updater.on('updateRequired', function () {
-    app.quit();
-  })
-  updater.on('updateAvailable', function () {
-    mainWindow.webContents.send('update-available');
-  })
-  updater.start()
+}
+app.on('ready', function () {
+
+    init()
+
+    AutoUpdater(mainWindow);
 
 
   globalShortcut.register('ctrl+shift+1', function () {

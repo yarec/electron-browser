@@ -9,7 +9,7 @@ try {
   var content = fs.readFileSync('./config.json');
   var config = JSON.parse(content);
 } catch (err) {
-  alert(err.message)
+  console.log(err.message)
   app.quit()
   err.message = "cache err"+ ': ' + err.message;
   //throw err;

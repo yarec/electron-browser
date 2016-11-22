@@ -1,28 +1,22 @@
 {
   "name": "mini2016",
-  "version": "1.2.1",
+  "version": "0.0.1",
   "main": "index.js",
-  "description": "browser ui for electron, written in react",
+  "description": "browser ui for electron, written in react squirrel nsis",
   "scripts": {
     "pkg": "electron-packager ./ mini2016 --platform=win32 --arch=x64 --out ./OutApp --version 1.4.7 --overwrite --icon=build/icon.ico",
     "pack": "build --dir",
     "test": "rm dist -r && build --dir",
-    "dist": "build"
+    "dist": "build --ignore='node_modules/(electron-packager|electron-prebuilt)'"
   },
   "build": {
     "appId": "your.id",
-    "asar": false,
+    "asar": true,
     "extraFiles": [
       "config.json"
     ],
-    "files": [
-      "**/*",
-      "!download/**/*",
-      "!OutApp/**/*",
-      "!release/**/*"
-    ],
     "win": {
-      "target": "zip"
+      "target": "squirrel"
     }
   },
   "keywords": [
@@ -39,7 +33,5 @@
     "electron-prebuilt": "^1.4.7"
   },
   "dependencies": {
-    "electron-plugins": "^0.1.0",
-    "electron-updater": "^0.3.1"
   }
 }
