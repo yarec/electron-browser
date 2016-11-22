@@ -70,12 +70,10 @@ function init(){
       app.quit()
     })
 }
+
 app.on('ready', function () {
-
-    init()
-
-    AutoUpdater(mainWindow);
-
+  init()
+  AutoUpdater(mainWindow);
 
   globalShortcut.register('ctrl+shift+1', function () {
     mainWindow.webContents.send('global-shortcut', 0);

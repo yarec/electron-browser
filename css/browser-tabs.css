@@ -84,12 +84,14 @@
 #browser-tabs > a.close i {
   font-size: 12.5px
 }
-#browser-tabs > a.app-close {
-  width: 20px;
-  color: #f5f5f5;
-  text-shadow: 0 0 1px rgba(50, 1, 1, 1);
-  margin-left: 12px;
+#browser-tabs > a.rbtn{
+  width: 10px;
+  color: #555;
+  margin-left: 11px;
 }
-#browser-tabs > a.app-close i {
+#browser-tabs > a.rbtn-close{
+  margin-right: 11px;
+}
+#browser-tabs > a.rbtn i {
   font-size: 14.5px
 }
