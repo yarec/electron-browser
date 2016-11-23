@@ -1,4 +1,5 @@
 node_modules/
+release/
 OutApp
 dist
 config.prod.json

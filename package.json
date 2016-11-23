@@ -1,5 +1,6 @@
 {
   "name": "mini2016",
+  "productName": "新格尔门窗管理软件",
   "version": "1.0.2",
   "main": "index.js",
   "description": "browser ui for electron, written in react squirrel nsis",
@@ -13,7 +14,8 @@
     "appId": "your.id",
     "asar": true,
     "extraFiles": [
-      "config.json"
+      "config.json",
+      "release/**/*"
     ],
     "files": [
       "**/*",

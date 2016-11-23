@@ -88,7 +88,7 @@ global.kt = {
       console.log(channel, name, value)
       kt.config[channel+"."+name] = value
 
-      var path = 'config.prod.json'
+      var path = '../config.prod.json'
       const json= require('../jsonfile');
       var file = new json.File(path)
 

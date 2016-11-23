@@ -6,7 +6,7 @@ const {remote} = require('electron');
 const {app} = remote.require('electron');
 
 const config_file = './config.json'
-const prod_config_file = './config.prod.json'
+const prod_config_file = '../config.prod.json'
 try {
   var fs = require('fs');
   var content = ""
