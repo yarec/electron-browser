@@ -1,4 +1,13 @@
+#top-tab {
+  display: flex;
+  #background: linear-gradient(to bottom, #ddd 90%, #bbb);
+  font-size: 13px;
+  -webkit-app-region: drag;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
 #browser-tabs {
+  width: 95%;
   display: flex;
   #background: linear-gradient(to bottom, #ddd 90%, #bbb);
   font-size: 13px;
@@ -8,7 +17,8 @@
 }
 #browser-tabs > div {
   -webkit-app-region: no-drag;
-  flex: 1;
+  #flex: 1;
+  width: 200px;
   display: flex;
   background: linear-gradient(to bottom, #fdfdfd 90%, #ccc);
   color: #777;
@@ -84,14 +94,25 @@
 #browser-tabs > a.close i {
   font-size: 12.5px
 }
-#browser-tabs > a.rbtn{
+
+.rbtns {
+  display: flex;
+}
+
+ a.rbtn{
+   -webkit-app-region: no-drag;
+   display: inline-block;
+   color: #888;
+   font-size: 11px;
+   cursor: pointer;
+   margin: 6px 4px;
   width: 10px;
   color: #555;
   margin-left: 11px;
 }
-#browser-tabs > a.rbtn-close{
+ a.rbtn-close{
   margin-right: 11px;
 }
-#browser-tabs > a.rbtn i {
+a.rbtn i {
   font-size: 14.5px
 }

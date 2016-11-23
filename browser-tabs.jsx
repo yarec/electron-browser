@@ -14,7 +14,7 @@ var BrowserTab = React.createClass({
 var BrowserTabs = React.createClass({
   render: function () {
     var self = this
-    return <div id="browser-tabs">
+    return <div id="top-tab"> <div id="browser-tabs">
       {this.props.pages.map(function (page, i) {
         if (!page)
           return
@@ -31,9 +31,14 @@ var BrowserTabs = React.createClass({
           <a className="minimize" onClick={this.props.onMinimize}><i className="fa fa-circle" /></a>
           <a className="maximize" onClick={this.props.onMaximize}><i className="fa fa-circle" /></a>
           */}
-          <a className="rbtn" onClick={this.props.onMinimize}><i className="fa fa-minus-square-o" /></a>
-          <a className="rbtn" onClick={this.props.onMaximize}><i className="fa fa-square-o" /></a>
-          <a className="rbtn rbtn-close" onClick={this.props.onClose}><i className="fa fa-close" /></a>
+      </div>
+
+      <div className="rbtns">
+      <a className="rbtn" onClick={this.props.onMinimize}><i className="fa fa-minus-square-o" /></a>
+      <a className="rbtn" onClick={this.props.onMaximize}><i className="fa fa-square-o" /></a>
+      <a className="rbtn rbtn-close" onClick={this.props.onClose}><i className="fa fa-close" /></a>
+      </div>
+
       </div>
   }
 })
