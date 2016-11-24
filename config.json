@@ -1,4 +1,7 @@
 {
   "home_url" : "http://www.thinkerx.com/register",
-  "printer_path" : "release/mini2016.exe"
+  "exec_map" : {
+    "mini2016.exe" : "release/mini2016.exe",
+    "scanner.exe" : "release/scanner.exe"
+  }
 }

@@ -99,18 +99,23 @@
   display: flex;
 }
 
- a.rbtn{
-   -webkit-app-region: no-drag;
-   display: inline-block;
-   color: #888;
-   font-size: 11px;
-   cursor: pointer;
-   margin: 6px 4px;
+a.rbtn:hover {
+  background: rgb(245, 119, 119);
+  color: #fff;
+}
+a.rbtn{
+  -webkit-app-region: no-drag;
+  display: inline-block;
+  color: #888;
+  font-size: 11px;
+  cursor: pointer;
   width: 10px;
   color: #555;
-  margin-left: 11px;
+  padding: 5px 10px;
+  #margin: 6px 4px;
+  #margin-left: 11px;
 }
- a.rbtn-close{
+a.rbtn-close{
   margin-right: 11px;
 }
 a.rbtn i {

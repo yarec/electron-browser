@@ -164,7 +164,11 @@ var BrowserChrome = React.createClass({
     },
     onMaximize: function () {
       if (remote.getCurrentWindow())
-        remote.getCurrentWindow().maximize()
+        if(remote.getCurrentWindow().isMaximized()){
+          remote.getCurrentWindow().unmaximize()
+        }else{
+          remote.getCurrentWindow().maximize()
+        }
       else
         remote.unmaximize()
     },

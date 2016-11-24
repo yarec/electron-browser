@@ -22,7 +22,7 @@ global.kt = {
         //mini2016.exe old appkey ids uid ids:1,2,3 uid:232
         //mini2016.exe new appkey dataUrl cburl tmpurl mgrurl
         const spawn = require('child_process').spawn;
-        let exec = spawn(config.printer_path, reqdata, {});
+        let exec = spawn(config.exec_map["mini2016.exe"], reqdata, {});
         exec.stdout.on('data', function(data){
             console.log('stdout: ' + data)
         });
@@ -81,6 +81,14 @@ global.kt = {
         console.log('stdout: ' + data)
       });
       */
+
+      if(config.exec_map[cmd]){
+        cmd = config.exec_map[cmd]
+      }
+      console.log("run: " + cmd)
+
+      const spawn = require('child_process').spawn;
+      let exec = spawn(cmd, [], {});
     },
     ConfigValue: 80,
     config: {},
@@ -88,7 +96,7 @@ global.kt = {
       console.log(channel, name, value)
       kt.config[channel+"."+name] = value
 
-      var path = '../config.prod.json'
+      var path = 'config.prod.json'
       const json= require('../jsonfile');
       var file = new json.File(path)
 
@@ -97,5 +105,9 @@ global.kt = {
       }
       file.writeSync()
 
+    },
+    appVersion: (appname) => {
+      return 5;
     }
+
   }
