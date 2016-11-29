@@ -102,10 +102,10 @@ var BrowserChrome = React.createClass({
   tabContextMenu: function (pageIndex) {
     var self = this
     var menu = new Menu()
-    menu.append(new MenuItem({ label: 'New Tab', click: function () { self.createTab() } }))
-    menu.append(new MenuItem({ label: 'Duplicate', click: function () { self.createTab(self.getPageObject(pageIndex).location) } }))
+    menu.append(new MenuItem({ label: '新建标签页', click: function () { self.createTab() } }))
+    menu.append(new MenuItem({ label: '复制当前标签页', click: function () { self.createTab(self.getPageObject(pageIndex).location) } }))
     menu.append(new MenuItem({ type: 'separator' }))
-    menu.append(new MenuItem({ label: 'Close Tab', click: function() { self.closeTab(pageIndex) } }))
+    menu.append(new MenuItem({ label: '关闭标签页', click: function() { self.closeTab(pageIndex) } }))
     menu.popup(remote.getCurrentWindow())
   },
   locationContextMenu: function (el) {
@@ -133,19 +133,26 @@ var BrowserChrome = React.createClass({
     var self = this
     var menu = new Menu()
     if (e.href) {
-      menu.append(new MenuItem({ label: 'Open Link in New Tab', click: function () { self.createTab(e.href) } }))
-      menu.append(new MenuItem({ label: 'Copy Link Address', click: function () { clipboard.writeText(e.href) } }))
+      menu.append(new MenuItem({ label: '在新标签页打开', click: function () { self.createTab(e.href) } }))
+      menu.append(new MenuItem({ label: '复制链接地址', click: function () { clipboard.writeText(e.href) } }))
     }
     if (e.img) {
-      menu.append(new MenuItem({ label: 'Save Image As...', click: function () { alert('todo') } }))
-      menu.append(new MenuItem({ label: 'Copy Image URL', click: function () { clipboard.writeText(e.img) } }))
-      menu.append(new MenuItem({ label: 'Open Image in New Tab', click: function () { self.createTab(e.img) } }))
+      menu.append(new MenuItem({ label: '保存图片为...', click: function () { alert('todo') } }))
+      menu.append(new MenuItem({ label: '复制图片地址', click: function () { clipboard.writeText(e.img) } }))
+      menu.append(new MenuItem({ label: '在新标签页打开图片', click: function () { self.createTab(e.img) } }))
     }
     if (e.hasSelection)
-      menu.append(new MenuItem({ label: 'Copy', click: function () { self.getWebView().copy() } }))
-    menu.append(new MenuItem({ label: 'Select All', click: function () { self.getWebView().selectAll() } }))
+      menu.append(new MenuItem({ label: '复制', click: function () { self.getWebView().copy() } }))
+    menu.append(new MenuItem({ label: '选择全部', click: function () { self.getWebView().selectAll() } }))
+      menu.append(new MenuItem({ label: '粘贴', click: function () { self.getWebView().paste() } }))
+      /*
     menu.append(new MenuItem({ type: 'separator' }))
-    menu.append(new MenuItem({ label: 'Inspect Element', click: function() { self.getWebView().inspectElement(e.x, e.y) } }))
+    menu.append(new MenuItem({ label: '审核元素', click: function() {
+      //self.getWebView().inspectElement(e.x, e.y)
+      // remote.getCurrentWindow().inspectElement(e.x, e.y)
+      remote.getCurrentWindow().webContents.inspectElement(e.x, e.y);
+    } }))
+    */
     menu.popup(remote.getCurrentWindow())
   },
 

@@ -1,3 +1,5 @@
+const {version} = require('./package');
+
 function normalizedUri(input) {
   var prefix = 'http://';
 
@@ -36,13 +38,16 @@ var BrowserNavbar = React.createClass({
        {/*
        <BrowserNavbarBtn title="Dev" icon="bug" onClick={this.props.onOpenDev} />
        <BrowserNavbarBtn title="Dev" icon="apple" onClick={this.props.onTest} />
+      <BrowserNavbarBtn title="首页" icon="angle-double-left fa-lg" onClick={this.props.onClickHome} disabled={!this.props.page.canGoBack} />
        */}
-      <BrowserNavbarBtn title="Rewind" icon="angle-double-left fa-lg" onClick={this.props.onClickHome} disabled={!this.props.page.canGoBack} />
-      <BrowserNavbarBtn title="Back" icon="angle-left fa-lg" onClick={this.props.onClickBack} disabled={!this.props.page.canGoBack} />
-      <BrowserNavbarBtn title="Forward" icon="angle-right fa-lg" onClick={this.props.onClickForward} disabled={!this.props.page.canGoForward} />
-      <BrowserNavbarBtn title="Refresh" icon="circle-thin" onClick={this.props.onClickRefresh} disabled={!this.props.page.canRefresh} />
+      <BrowserNavbarBtn title="后退" icon="angle-left fa-lg" onClick={this.props.onClickBack} disabled={!this.props.page.canGoBack} />
+      <BrowserNavbarBtn title="前进" icon="angle-right fa-lg" onClick={this.props.onClickForward} disabled={!this.props.page.canGoForward} />
+      <BrowserNavbarBtn title="刷新" icon="fa fa-refresh" onClick={this.props.onClickRefresh} disabled={!this.props.page.canRefresh} />
       <div className="input-group">
         <BrowserNavbarLocation onEnterLocation={this.props.onEnterLocation} onChangeLocation={this.props.onChangeLocation} onContextMenu={this.props.onLocationContextMenu} page={this.props.page} />
+      </div>
+      <div className="version">
+        {version}
       </div>
     </div>
   }

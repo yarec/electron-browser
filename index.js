@@ -30,6 +30,9 @@ app.on('ready', function () {
   init()
   AutoUpdater(mainWindow);
 
+  globalShortcut.register('F9', function () {
+    mainWindow.webContents.send('global-shortcut', 0);
+  });
   globalShortcut.register('ctrl+shift+1', function () {
     mainWindow.webContents.send('global-shortcut', 0);
   });

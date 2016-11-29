@@ -1,6 +1,6 @@
 var BrowserTab = React.createClass({
   render: function () {
-    var title = this.props.page.title || 'loading'
+    var title = this.props.page.title || '加载中...'
     return <div className={this.props.isActive ? 'active' : ''} title={title} onClick={this.props.onClick} onContextMenu={this.props.onContextMenu}>
       <span>
         {title}

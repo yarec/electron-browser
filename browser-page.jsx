@@ -25,7 +25,7 @@ var BrowserPageStatus = React.createClass({
   render: function () {
     var status = this.props.page.statusText
     if (!status && this.props.page.isLoading)
-      status = 'Loading...'
+      status = '加载中...'
     return <div id="browser-page-status" className={status ? 'visible' : 'hidden'}>{status}</div>
   }
 })
