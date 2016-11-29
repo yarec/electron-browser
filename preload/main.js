@@ -3,6 +3,7 @@ require('./context-menu')
 
 const { ipcRenderer } = require('electron')
 const { config } = require('../config');
+const { log } = require('../log');
 
 global.kt = {
     params: [],
@@ -18,6 +19,7 @@ global.kt = {
           var arg = p+':'+ kt.params[p]
           reqdata.push(arg)
         }
+        //log(reqdata.join(' '))
 
         //mini2016.exe old appkey ids uid ids:1,2,3 uid:232
         //mini2016.exe new appkey dataUrl cburl tmpurl mgrurl

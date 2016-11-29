@@ -4,3 +4,4 @@ download/
 OutApp
 dist
 config.prod.json
+app.log

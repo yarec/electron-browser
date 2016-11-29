@@ -2,6 +2,7 @@
 const {app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 const AutoUpdater = require('./auto-updater');
 const {handleSquirrelEvent }= require('./squirrel');
+const { log } = require('./log');
 
 if (handleSquirrelEvent()) {
    return;
@@ -16,6 +17,7 @@ app.on('window-all-closed', function() {
 })
 
 function init(){
+  log('eeee')
     mainWindow = new BrowserWindow({ width: 1030, height: 920, frame: false })
 
     mainWindow.loadURL('file://' + __dirname + '/browser.html');
