@@ -9,6 +9,7 @@ if (handleSquirrelEvent()) {
 }
 
 var mainWindow = null
+var settingsWindow = null
 
 app.on('window-all-closed', function() {
   if (process.platform != 'darwin') {
@@ -17,8 +18,7 @@ app.on('window-all-closed', function() {
 })
 
 function init(){
-  log('eeee')
-    mainWindow = new BrowserWindow({ width: 1030, height: 920, frame: false })
+    mainWindow = new BrowserWindow({ width: 1030, height: 920, frame: false})
 
     mainWindow.loadURL('file://' + __dirname + '/browser.html');
     mainWindow.maximize()
@@ -28,11 +28,34 @@ function init(){
     })
 }
 
+function initSetting(){
+    settingsWindow = new BrowserWindow( {
+        width:      640,
+        heght:      480,
+        autoHideMenuBar: true,
+        resizable:  false,
+        'skip-taskbar': true
+    } );
+    settingsWindow.loadURL( 'file://' + __dirname + '/settings.html' );
+    settingsWindow.on( 'closed', function() {
+        settingsWindow = null;
+    } );
+}
+
 app.on('ready', function () {
   init()
   AutoUpdater(mainWindow);
 
   globalShortcut.register('F9', function () {
+    mainWindow.webContents.send('global-shortcut', 0);
+  });
+  globalShortcut.register('F10', function () {
+    initSetting()
+  });
+  globalShortcut.register('F11', function () {
+    mainWindow.webContents.send('global-shortcut', 0);
+  });
+  globalShortcut.register('F12', function () {
     mainWindow.webContents.send('global-shortcut', 0);
   });
   globalShortcut.register('ctrl+shift+1', function () {

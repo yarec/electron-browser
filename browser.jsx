@@ -207,10 +207,13 @@ var BrowserChrome = React.createClass({
       */
       console.log("on test ...")
 
+/*
       const json= require('./jsonfile');
       var file = new json.File('t.json')
       file.set("a.b", "v")
       file.writeSync()
+      */
+      
 
     },
     onOpenDev: function () {
