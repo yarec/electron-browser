@@ -2,12 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/site.css">
+    <link rel="stylesheet" href="./css/hackcss/hack.css">
+    <link rel="stylesheet" href="./css/hackcss/themes/standard.css">
   </head>
-  <body>
-      <h3>Hello World!</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, inventore!</p>
-      <input id="url" type="text" name="" value="">
-      <button id="exit">Exit</button>
+  <body class="standard">
+     <div class="main container">
+       <p></p>
+    <form class="form">
+            <fieldset class="form-group">
+              <label for="ip">IP地址:</label>
+              <input id="ip" placeholder="" class="form-control">
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="port">端口:</label>
+              <input id="port" placeholder="" class="form-control">
+            </fieldset>
+
+            <br><br>
+
+            <div class="form-actions">
+              <button onclick="save_config()" type="button" class="btn btn-primary btn-block">Submit</button>
+            </div>
+          </form>
+        </div>
   </body>
 </html>
 

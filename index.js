@@ -30,10 +30,10 @@ function init(){
 
 function initSetting(){
     settingsWindow = new BrowserWindow( {
-        width:      640,
+        width:      450,
         heght:      480,
         autoHideMenuBar: true,
-        resizable:  false,
+        resizable:  true,
         'skip-taskbar': true
     } );
     settingsWindow.loadURL( 'file://' + __dirname + '/settings.html' );

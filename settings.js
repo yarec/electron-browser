@@ -1,7 +1,13 @@
 
 const {version} = require('./package');
+const {config} = require('./config');
 
-console.log(version)
+var el_url = document.getElementById("ip");
+el_url.value = config.home_url;
 
-var el_url = document.getElementById("url");
-el_url.value = version;
+console.log(config)
+
+function save_config(){
+  var ip = el_url.value;
+  console.log(ip)
+}
