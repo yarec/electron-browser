@@ -6,6 +6,7 @@ const {remote} = require('electron');
 const {app} = remote.require('electron');
 
 const config_file = './config.json'
+const old_config_file = '../config.dll'
 const prod_config_file = '../config.prod.json'
 try {
   var fs = require('fs');
@@ -18,7 +19,11 @@ try {
     config_prod = file.data
     config.home_url = "http://" + config_prod.server.url +"/"+ config_prod.server.path
     console.log(config)
-  }else{
+  }else if(fs.existsSync(old_config_file)){
+    var content_xml = fs.readFileSync(old_config_file, 'utf8');
+    var matches = content_xml.match(/<server .* path="(.*)" url="(.*)".*>/)
+    config.home_url = "http://" + matches[2] +"/"+ matches[1]
+    console.log(matches);
   }
 
 } catch (err) {

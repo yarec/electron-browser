@@ -37,14 +37,16 @@ global.kt = {
       var http = require('http'),
       fs = require('fs'),
       path= require("path");
-      if(!fs.existsSync('download/')){
-        var creats = fs.mkdirSync('download', 0777);
+
+      var dlpath = 'download'
+      if(!fs.existsSync(dlpath)){
+        var creats = fs.mkdirSync(dlpath, 0777);
       }
       var fname = path.basename(url)
       console.log(fname)
       var request = http.get(url, function(response) {
         if (response.statusCode === 200) {
-          var file = fs.createWriteStream("download/"+fname);
+          var file = fs.createWriteStream(dlpath + "/"+fname);
           response.pipe(file);
 
           const spawn = require('child_process').spawn;
@@ -96,7 +98,7 @@ global.kt = {
       console.log(channel, name, value)
       kt.config[channel+"."+name] = value
 
-      var path = 'config.prod.json'
+      var path = '../config.prod.json'
       const json= require('../jsonfile');
       var file = new json.File(path)
 
