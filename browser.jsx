@@ -80,8 +80,13 @@ var BrowserChrome = React.createClass({
   },
   closeTab: function (pageIndex) {
     // last tab, full reset
-    if (this.state.pages.filter(Boolean).length == 1)
+    if (this.state.pages.filter(Boolean).length == 1){
+      console.log("one tab")
+      remote.getCurrentWindow().close()
+      app.quit()
+
       return this.setState({ pages: [createPageObject()], currentPageIndex: 0 })
+    }
 
     this.state.pages[pageIndex] = null
     this.setState({ pages: this.state.pages })
@@ -96,6 +101,7 @@ var BrowserChrome = React.createClass({
         if (this.state.pages[i])
           return this.setState({ currentPageIndex: i })
       }
+
     }
   },
 

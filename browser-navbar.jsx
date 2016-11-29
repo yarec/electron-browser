@@ -47,7 +47,7 @@ var BrowserNavbar = React.createClass({
         <BrowserNavbarLocation onEnterLocation={this.props.onEnterLocation} onChangeLocation={this.props.onChangeLocation} onContextMenu={this.props.onLocationContextMenu} page={this.props.page} />
       </div>
       <div className="version">
-        {version}
+        当前版本：{version}
       </div>
     </div>
   }
