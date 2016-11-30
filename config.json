@@ -1,7 +1,14 @@
 {
+  "server" : {
+    "ip" : "www.thinkerx.com",
+    "port": "80",
+    "path" : "register"
+  },
   "home_url" : "http://www.thinkerx.com/register",
+  "libdir" : "../release",
   "exec_map" : {
-    "mini2016.exe" : "../release/mini2016.exe",
-    "scanner.exe" : "../release/scanner.exe"
+    "config.dll" : "config.dll",
+    "mini2016.exe" : "mini2016.exe",
+    "scanner.exe" : "scanner.exe"
   }
 }

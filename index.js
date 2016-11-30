@@ -29,17 +29,21 @@ function init(){
 }
 
 function initSetting(){
-    settingsWindow = new BrowserWindow( {
-        width:      450,
-        heght:      480,
-        autoHideMenuBar: true,
-        resizable:  true,
-        'skip-taskbar': true
-    } );
-    settingsWindow.loadURL( 'file://' + __dirname + '/settings.html' );
-    settingsWindow.on( 'closed', function() {
-        settingsWindow = null;
-    } );
+  if(settingsWindow!=null){
+    return;
+  }
+  settingsWindow = new BrowserWindow( {
+    width:      500,
+    heght:      180,
+    autoHideMenuBar: true,
+    resizable:  true,
+    'skip-taskbar': true
+  } );
+  settingsWindow.setSize(500, 350)
+  settingsWindow.loadURL( 'file://' + __dirname + '/settings.html' );
+  settingsWindow.on( 'closed', function() {
+    settingsWindow = null;
+  } );
 }
 
 app.on('ready', function () {

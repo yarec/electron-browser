@@ -2,42 +2,22 @@
   padding: 20px 65px!important;
 }
 
-.hack h1 {
-  padding-top: 0;
+.mainform {
+  width: 25em!important;
 }
 
-.example {
-  margin-bottom: 20px;
+.mform-control {
+  width: 18rem!important;
 }
 
-.example .btn {
-  margin-bottom: 10px;
+.mbtn {
+  width: 25rem!important;
+}
+.adv {
+  display: none;
 }
 
-footer.footer {
-  border-top: 1px solid #ccc;
-  margin-top: 5rem;
-  padding: 3rem 0;
-}
-
-.grid-example {
-  padding: 0 2px;
-  background-color: #ccc;
-  margin-bottom: 1rem;
-}
-
-.grid-example .cell {
-  text-align: center;
-  border: 1px solid #ccc;
-  padding: 4px 2px;
-  color: #999;
-}
-
-.grid-example .cell .content {
-  background-color: #ddd;
-}
-
-:not(pre) > code[class*="language-"], pre[class*="language-"] {
-  background-color: transparent;
-  font-weight: normal;
+.bigckbox{
+-webkit-transform: scale(1.5); /* Safari and Chrome */
+padding: 10px;
 }

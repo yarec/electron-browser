@@ -2,7 +2,7 @@ require('./hover-status')
 require('./context-menu')
 
 const { ipcRenderer } = require('electron')
-const { config } = require('../config');
+const { config, saveConfig } = require('../config');
 const { log } = require('../log');
 
 global.kt = {
@@ -97,17 +97,22 @@ global.kt = {
     ConfigValue: 80,
     config: {},
     setConfig: (channel, name, value) => {
-      console.log(channel, name, value)
+      //console.log(channel, name, value)
       kt.config[channel+"."+name] = value
+      saveConfig(kt.config["server.url"], 80, kt.config["server.path"])
 
+/*
       var path = '../config.prod.json'
       const json= require('../jsonfile');
       var file = new json.File(path)
 
+
       for(p in kt.config){
         file.set(p, kt.config[p] )
       }
+
       file.writeSync()
+      */
 
     },
     appVersion: (appname) => {
