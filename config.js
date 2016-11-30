@@ -6,15 +6,16 @@ const {remote} = require('electron');
 const {app} = remote.require('electron');
 
 const config_file = './config.json'
-const old_config_file = '../config.dll'
 const prod_config_file = '../config.prod.json'
+
+function gen_home_url(cfg){
+    return "http://" + cfg.server.ip + ":" + cfg.server.port+"/"+ cfg.server.path
+}
 try {
   var fs = require('fs');
   var content = fs.readFileSync(config_file);
   var config = JSON.parse(content);
 
-  config.home_url_ori = config.home_url = "http://" + config.server.ip + ":" + config.server.port+"/"+ config.server.path
-  //var exec_map_keys = Object.keys(config.exec_map)
   for(var key in config.exec_map){
     config.exec_map[key] = config.libdir + "/" + key
   }
@@ -26,13 +27,16 @@ try {
     config.server.ip = config_prod.server.ip
     config.server.port = config_prod.server.port
     config.server.path = config_prod.server.path
-    config.home_url = "http://" + config_prod.server.ip + ":"+ config_prod.server.port +"/"+ config_prod.server.path
-  }else if(fs.existsSync(old_config_file)){
-    var content_xml = fs.readFileSync(old_config_file, 'utf8');
+  }else if(fs.existsSync(config.exec_map["config.dll"])){
+    var content_xml = fs.readFileSync(config.exec_map["config.dll"], 'utf8');
     var matches = content_xml.match(/<server .* path="(.*)" url="(.*)".*>/)
-    config.home_url = "http://" + matches[2] +"/"+ matches[1]
+    config.server.ip = matches[2]
+    config.server.port = 80
+    config.server.path = matches[1]
     //console.log(matches);
   }
+
+  config.home_url_ori = config.home_url = gen_home_url(config)
 
   console.log(config)
 
@@ -58,7 +62,7 @@ exports.saveConfig = function(ip, port, path){
   file.set("server.path", path)
   file.writeSync()
 
-  console.log(config.exec_map["config.dll"])
+  //console.log(config.exec_map["config.dll"])
 
   var tpl = fs.readFileSync("config.dll.tpl", 'utf8');
   tpl = tpl.replace(/\$ip/g, ip)

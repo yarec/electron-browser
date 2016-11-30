@@ -1,7 +1,7 @@
 {
   "name": "mini2016",
   "productName": "新格尔门窗软件",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "main": "index.js",
   "description": "browser ui for electron, written in react squirrel nsis",
   "scripts": {
