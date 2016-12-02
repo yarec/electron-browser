@@ -21,7 +21,6 @@ global.kt = {
         }
         log(reqdata.join(' '))
 
-        //mini2016.exe old appkey ids uid ids:1,2,3 uid:232
         //mini2016.exe new appkey dataUrl cburl tmpurl mgrurl
         const spawn = require('child_process').spawn;
         let exec = spawn(config.exec_map["mini2016.exe"], reqdata, {});
@@ -30,8 +29,21 @@ global.kt = {
         });
 
     },
-    showReport : (type, ids, uid) => {
-        console.log(type + ids + uid)
+    showReport : (appkey, ids, uid) => {
+        //mini2016.exe old appkey ids uid ids:1,2,3 uid:232
+        var reqdata = ['old', appkey, ids, uid]
+        for(p in kt.params){
+          var arg = p+':'+ kt.params[p]
+          reqdata.push(arg)
+        }
+        log(reqdata.join(' '))
+
+        const spawn = require('child_process').spawn;
+        let exec = spawn(config.exec_map["mini2016.exe"], reqdata, {});
+        exec.stdout.on('data', function(data){
+            console.log('stdout: ' + data)
+        });
+        return true;
     },
     downloadFile : (url, type, o) =>{
       console.log(url)
