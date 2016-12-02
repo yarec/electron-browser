@@ -37,7 +37,7 @@ try {
   }
 
   config.home_url_ori = config.home_url = gen_home_url(config)
-
+  //config.home_url = "http://114.215.168.201/mini2015/t.html"
   console.log(config)
 
 } catch (err) {

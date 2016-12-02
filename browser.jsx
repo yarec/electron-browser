@@ -24,6 +24,8 @@ function createPageObject (location) {
   }
 }
 
+global.gState;
+
 var BrowserChrome = React.createClass({
   getInitialState: function () {
     return {
@@ -77,6 +79,7 @@ var BrowserChrome = React.createClass({
   createTab: function (location) {
     this.state.pages.push(createPageObject(location))
     this.setState({ pages: this.state.pages, currentPageIndex: this.state.pages.length - 1 })
+    global.gState = { pages: this.state.pages, currentPageIndex: this.state.pages.length - 1 };
   },
   closeTab: function (pageIndex) {
     // last tab, full reset
@@ -213,7 +216,7 @@ var BrowserChrome = React.createClass({
       file.set("a.b", "v")
       file.writeSync()
       */
-      
+
 
     },
     onOpenDev: function () {

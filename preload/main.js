@@ -132,3 +132,11 @@ global.kt = {
     }
 
   }
+
+
+global.window.open = function (a,b){
+
+  console.log(global.gState)
+}
+global.window.close = function (a,b){
+}
