@@ -5,7 +5,7 @@
     "path" : "register"
   },
   "home_url" : "http://www.thinkerx.com/register",
-  "libdir" : "../release",
+  "libdir" : "../report",
   "exec_map" : {
     "config.dll" : "config.dll",
     "mini2016.exe" : "mini2016.exe",

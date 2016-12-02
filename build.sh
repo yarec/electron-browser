@@ -4,8 +4,9 @@ ver=$1
 
 echo $ver
 
-build --dir --win --ia32
-cp ./dist/win-ia32-unpacked/resources/app.asar ../electron_men_online/app-$ver/resources
+build --win --ia32
+cp ./dist/win-ia32-unpacked/resources/app.asar ../electron_men_online/release/app-$ver/resources
+cp ./dist/win-ia32/RELEASES ../electron_men_online/release/packages/
 
 exit
 
