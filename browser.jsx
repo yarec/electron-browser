@@ -107,7 +107,10 @@ var BrowserChrome = React.createClass({
       }
     }
 
-    this.setState({ currentPageIndex: idx })
+    if(idx!=null){
+        this.setState({ currentPageIndex: idx })
+    }
+
     this.state.pages[pageIndex] = null
     this.setState({ pages: this.state.pages })
   },
@@ -307,9 +310,9 @@ var BrowserChrome = React.createClass({
           this.closeTab(pageIndex)
       }
     },
-    onNewWindow: function (e, url,a,b) {
-        var _url = e.frameName
-        if(_url=='_self'){
+    onNewWindow: function (e, url,a) {
+        var _url = e.url
+        if(e.frameName=='_self'){
             _url = url.location
         }
         this.createTab(_url)
