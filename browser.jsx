@@ -24,14 +24,12 @@ function createPageObject (location) {
   }
 }
 
-global.gState;
-
 var BrowserChrome = React.createClass({
   getInitialState: function () {
-    return {
-      pages: [createPageObject()],
-      currentPageIndex: 0
-    }
+      return {
+          pages: [createPageObject()],
+          currentPageIndex: 0
+      }
   },
   componentWillMount: function () {
     // bind handlers to this object
@@ -79,7 +77,6 @@ var BrowserChrome = React.createClass({
   createTab: function (location) {
     this.state.pages.push(createPageObject(location))
     this.setState({ pages: this.state.pages, currentPageIndex: this.state.pages.length - 1 })
-    global.gState = { pages: this.state.pages, currentPageIndex: this.state.pages.length - 1 };
   },
   closeTab: function (pageIndex) {
     // last tab, full reset
@@ -91,21 +88,28 @@ var BrowserChrome = React.createClass({
       return this.setState({ pages: [createPageObject()], currentPageIndex: 0 })
     }
 
-    this.state.pages[pageIndex] = null
-    this.setState({ pages: this.state.pages })
-
     // find the nearest adjacent page to make active
+    var idx = null
     if (this.state.currentPageIndex == pageIndex) {
       for (var i = pageIndex; i >= 0; i--) {
-        if (this.state.pages[i])
-          return this.setState({ currentPageIndex: i })
+        if (this.state.pages[i] && i!=pageIndex){
+            idx = i
+            break;
+        }
       }
-      for (var i = pageIndex; i < this.state.pages.length; i++) {
-        if (this.state.pages[i])
-          return this.setState({ currentPageIndex: i })
+      if(idx==null){
+          for (var i = pageIndex; i < this.state.pages.length; i++) {
+              if (this.state.pages[i] && i!=pageIndex){
+                  idx = i
+                  break;
+              }
+          }
       }
-
     }
+
+    this.setState({ currentPageIndex: idx })
+    this.state.pages[pageIndex] = null
+    this.setState({ pages: this.state.pages })
   },
 
   tabContextMenu: function (pageIndex) {
@@ -297,10 +301,21 @@ var BrowserChrome = React.createClass({
       else if (e.channel == 'contextmenu-data') {
         this.webviewContextMenu(e.args[0])
       }
+      else if (e.channel == 'close-tab') {
+          var pageIndex = this.state.currentPageIndex
+          console.log(pageIndex);
+          this.closeTab(pageIndex)
+      }
     },
-    onNewWindow: function (e, url) {
-        console.log(e)
-        this.createTab(e.url)
+    onNewWindow: function (e, url,a,b) {
+        var _url = e.frameName
+        if(_url=='_self'){
+            _url = url.location
+        }
+        this.createTab(_url)
+    },
+    onClose: function (e, page, pageIndex) {
+        this.closeTab(pageIndex)
     }
   },
   btnHandler: function (){

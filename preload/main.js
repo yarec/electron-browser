@@ -1,9 +1,11 @@
 require('./hover-status')
 require('./context-menu')
 
+const {remote} = require('electron');
 const { ipcRenderer } = require('electron')
 const { config, saveConfig } = require('../config');
 const { log } = require('../log');
+const { EventEmitter } = require('events');
 
 global.kt = {
     params: [],
@@ -132,11 +134,3 @@ global.kt = {
     }
 
   }
-
-
-global.window.open = function (a,b){
-
-  console.log(global.gState)
-}
-global.window.close = function (a,b){
-}
